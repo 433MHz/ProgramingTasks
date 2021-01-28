@@ -33,14 +33,38 @@ function run(option){
 
         case 21:
             input = document.getElementById("input1").value;
+            calcKM(input);
             break;
 
         case 22:
             input = document.getElementById("input2").value;
+            calcKM(input/1000);
             break;
 
         case 23:
             input = document.getElementById("input3").value;
+            var calc = 1.6 * input;
+            calcKM(calc);
+            break;
+
+        case 31:
+            input = document.getElementById("input1").value;
+            calcMB(input);
+            break;
+
+        case 32:
+            input = document.getElementById("input2").value;
+            calcMB(input/1000);
+            break;
+
+        case 33:
+            input = document.getElementById("input3").value;
+            calcMB(input/8);
+            break;
+
+        case 34:
+            input = document.getElementById("input4").value;
+            calcMB((input/8)/1000);
             break;
     }
     output1.value = null;
@@ -67,11 +91,16 @@ function run(option){
     }
 
     function calcKM(unit){
-
+        val1 = unit;
+        val2 = unit*1000;
+        val3 = unit/1.6
     }
 
     function calcMB(unit){
-
+        val1 = unit;
+        val2 = unit * 1000;
+        val3 = unit*8;
+        val4 = (unit*8)*1000;
     }
 }
 
@@ -134,6 +163,9 @@ function switchPage(page){
             name3.innerText = "MegaBits";
 
             fourInputs = true;
+
+            output4 = document.getElementById("input4");
+
             break;
 
     
