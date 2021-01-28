@@ -17,9 +17,10 @@ nav
 {
     width: 15%;
     height: 800px;
-    background-color: black;
+    background-color: rgb(150, 145, 106);
     float: left;
     text-align: center;
+    color: white;
 }
 
 article
@@ -35,4 +36,10 @@ input[type=text]
 {
     margin-left: 30px;
     margin-top: 30px;
+}
+
+nav span:hover
+{
+    cursor: pointer;
+    color: green;
 }

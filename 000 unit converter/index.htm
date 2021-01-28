@@ -10,14 +10,15 @@
     <header>Unit converter</header>
     <nav>
         Convert <br>
-        <a href="">Kilograms/Grams/Miligrams</a> <br>
-        <a href="">Kilometers/Meters/Miles</a> <br>
-        <a href="">Megabites/Kilobites/Megabytes/Kilobytes</a> <br>
+        <span onclick="switchPage(1)">Kilograms/Grams/Miligrams</span> <br>
+        <span onclick="switchPage(2)">Kilometers/Meters/Miles</span> <br>
+        <span onclick="switchPage(3)">Megabites/Kilobites/Megabytes/Kilobytes</span> <br>
     </nav>
     <article>
-        Kilograms: <input type="text" placeholder="Kilograms" id="input1"><input type="button" value="Konwertuj" onclick="run(11)"><br>
-        Grams:     <input type="text" placeholder="Grams" id="input2"><input type="button" value="Konwertuj" onclick="run(12)"><br>
-        Miligrams: <input type="text" placeholder="Miligrams" id="input3"><input type="button" value="Konwertuj" onclick="run(13)"><br>
+        <span id="name1">Kilograms:</span> <input type="text" placeholder="Kilograms" id="input1"><input type="button" value="Konwertuj" id="button1" onclick="run(11)"><br>
+        <span id="name2">Grams:</span>     <input type="text" placeholder="Grams" id="input2"><input type="button" value="Konwertuj" id="button2" onclick="run(12)"><br>
+        <span id="name3">Miligrams:</span> <input type="text" placeholder="Miligrams" id="input3"><input type="button" value="Konwertuj" id="button3" onclick="run(13)"><br>
+        <div id="option4"></div>
     </article>
 
     <script src="script.js"></script>
