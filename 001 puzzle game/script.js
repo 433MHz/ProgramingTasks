@@ -58,14 +58,24 @@ function slide(idNumber){
     if(plusFour.includes(emptyPos)){
         neighbors[3] = emptyPos+4;
     }
-        var empty;
-        var nEmpty;
+
     if(neighbors.includes(idNumber)){
-        empty = positions[emptyPos-1];
-        nEmpty = positions[idNumber-1];
+        var empty = positions[emptyPos-1];
+        var nEmpty = positions[idNumber-1];
         positions[emptyPos-1] = nEmpty;
         positions[idNumber-1] = empty;
         putDivs();
+
+        var isWin = true;
+        for(var x = 0; x < positions.length; x++){
+            if(x+1 != positions[x]){
+                isWin = false;
+            }
+        }
+
+        if(isWin){
+            alert("You won!");
+        }
     }
 }
 
