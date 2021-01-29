@@ -28,13 +28,45 @@ function putDivs(){
         }
         else{
             htmlCode = "<div class=\"puzzle piece" + positions[i] + "\">"+positions[i]+"</div>";
+            var divID = document.getElementById("div"+(i+1)).id;
+            divID = divID.substring(3,5);
+            divID = "slide(" + divID + ")";
+            divs[i].setAttribute('onclick' , divID);
         }
         divs[i].innerHTML = htmlCode;
     }
 }
 
 function slide(idNumber){
-    console.log(idNumber);
+    var emptyPos;
+    var neighbors = [];
+    for(var i = 0; i < positions.length; i++){
+        if(positions[i] == 16){
+            emptyPos = i+1;
+        }
+    }
+
+    if(minusOne.includes(emptyPos)){
+        neighbors[0] = emptyPos-1;
+    }
+    if(minusFour.includes(emptyPos)){
+        neighbors[1] = emptyPos-4;
+    }
+    if(plusOne.includes(emptyPos)){
+        neighbors[2] = emptyPos+1;
+    }
+    if(plusFour.includes(emptyPos)){
+        neighbors[3] = emptyPos+4;
+    }
+        var empty;
+        var nEmpty;
+    if(neighbors.includes(idNumber)){
+        empty = positions[emptyPos-1];
+        nEmpty = positions[idNumber-1];
+        positions[emptyPos-1] = nEmpty;
+        positions[idNumber-1] = empty;
+        putDivs();
+    }
 }
 
 
