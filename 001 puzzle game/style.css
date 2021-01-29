@@ -103,6 +103,17 @@
 
 }
 
+.piece16
+{
+    background-position: -300px -300px;
+
+}
+
+.puzzle.piece16
+{
+    background-image: none;
+}
+
 .merger
 {
     float: left;
