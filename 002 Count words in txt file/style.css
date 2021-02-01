@@ -1,0 +1,17 @@
+header
+{
+    background-color: rgb(204, 204, 204);
+    width: 100%;
+    text-align: center;
+    padding: 20px;
+}
+
+article
+{
+    background-color: rgb(204, 204, 204);
+    width: 1500px;
+    height: 700px;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 50px;
+}
