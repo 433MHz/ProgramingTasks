@@ -22,8 +22,7 @@ function insertDivs(){
     }
 
     container.innerHTML = htmlCode;
-    console.log(fillVerticalPositions(7,7,3));
-    console.log(fillHorizontalPositions(7,7,3));
+    generatePositions();
 }
 
 function generatePositions(){
@@ -33,25 +32,68 @@ function generatePositions(){
     var verticalsPositions;
     var horizontalPositions;
 
+    verticalsPositions = fillVerticalPositions(7,7,3);
+    horizontalPositions = fillHorizontalPositions(7,7,3);
+
     for(var i = 0; i < 49; i++){    //Fill availablePos with 49 true values (0-48)
         availablePos.push(true);
     }
 
+    console.log(availablePos);
     shipsAmount = getRandomNumber(1, 5);
 
     for(var i = 0; i < shipsAmount; i++){
+        switch (getRandomNumber(1,2)) {
+            case 1:
+                if(true){
+                    var pos1 = getRandomNumber(1,49);
+                    while(true){
+                        if(verticalsPositions.includes(pos1)){break;}
+                        else{pos1 = getRandomNumber(1,49);}
+                    }
+                    var pos2 = pos1 + 1;
+                    var pos3 = pos2 + 1;
 
+                    if(availablePos[pos1-1] && availablePos[pos2-1] && availablePos[pos3-1]){
+                        shipsPos[i] = {
+                            "pos1" : pos1,
+                            "pos2" : pos2,
+                            "pos3" : pos3
+                        }
+                        }
+            }
+            break;
 
-        var pos1;
-        var pos2;
-        var pos3;
-        shipsPos[i] = {};
+            case 2:
+                if(true){
+                    var pos1 = getRandomNumber(1,49);
+                    while(true){
+                        if(horizontalPositions.includes(pos1)){break;}
+                        else{pos1 = getRandomNumber(1,49);}
+                    }
+                    var pos2 = pos1 + 7;
+                    var pos3 = pos2 + 7;
+
+                    if(availablePos[pos1-1] && availablePos[pos2-1] && availablePos[pos3-1]){
+                        shipsPos[i] = {
+                            "pos1" : pos1,
+                            "pos2" : pos2,
+                            "pos3" : pos3
+                        }
+                        }
+            }
+            break;
+
+        }
+
     }
+
+    console.log(shipsPos);
 }
 
 
 function getRandomNumber(min, max){
-    max+1;
+    max = max + 1;
     return Math.floor(Math.random() * (max - min)) + min;
 }
 
