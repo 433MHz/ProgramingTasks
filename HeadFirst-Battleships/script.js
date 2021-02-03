@@ -1,3 +1,11 @@
+function mainF(){
+    insertDivs();
+    generatePositions();
+}
+
+
+
+
 function insertDivs(){
     var htmlCode = "";
     var container = document.getElementById("container");
@@ -20,12 +28,16 @@ function insertDivs(){
     for(var i = 0; i < 7; i++){
         htmlCode = htmlCode + "<div class=\"gameDivs alphabetNumbers numNumbers\">"+i+"</div>";
     }
-
     container.innerHTML = htmlCode;
-    generatePositions();
+
 }
 
-function generatePositions(){
+function generatePositions(){           //Generate positions of ships 
+    var minimumValueOfShipsOnMap = 1;   //Edit to set minimum amout of ships on map
+    var maximumValuesOfShipsOnMap = 5;  //Edit to set maximum amout of ships on map
+
+
+
     var availablePos = [];
     var shipsAmount = 0;
     var shipsPos = [];
@@ -39,8 +51,7 @@ function generatePositions(){
         availablePos.push(true);
     }
 
-    console.log(availablePos);
-    shipsAmount = getRandomNumber(1, 5);
+    shipsAmount = getRandomNumber(minimumValueOfShipsOnMap, maximumValuesOfShipsOnMap);
 
     for(var i = 0; i < shipsAmount; i++){
         switch (getRandomNumber(1,2)) {
@@ -59,9 +70,7 @@ function generatePositions(){
                             "pos1" : pos1,
                             "pos2" : pos2,
                             "pos3" : pos3
-                        }
-                        }
-            }
+                        }}}
             break;
 
             case 2:
@@ -79,16 +88,10 @@ function generatePositions(){
                             "pos1" : pos1,
                             "pos2" : pos2,
                             "pos3" : pos3
-                        }
-                        }
-            }
+                        }}}
             break;
-
-        }
-
-    }
-
-    console.log(shipsPos);
+    }}
+    return shipsPos;
 }
 
 
