@@ -1,0 +1,42 @@
+body
+{
+    background-color: black;
+    margin: 0;
+    color: white;
+}
+
+article
+{
+    background-color: rgba(0, 128, 0, 0.13);
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 100px;
+    width: 800px;
+    height: 800px;
+}
+
+.gameDivs
+{
+    width: 98px;
+    height: 98px;
+    border: green 1px solid;
+    float: left;
+}
+
+.alphabetNumbers
+{
+    text-align: right;
+    padding-top: 20px;
+    height: 80px;
+    width: 100px;
+    font-size: 50px;
+    border: none;
+    background-color: black;
+}
+
+.numNumbers
+{
+    text-align: center;
+    padding-top: 0;
+    height: 100px;
+}
