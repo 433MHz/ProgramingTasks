@@ -10,7 +10,7 @@ function insertDivs(){
 
         for(var x = 0; x < 7; x++){
             counter = counter + 1;
-            htmlCode = htmlCode + "<div id=\"gameDiv"+counter+"\" class=\"gameDivs\"></div>";
+            htmlCode = htmlCode + "<div id=\"gameDiv"+counter+"\" class=\"gameDivs\">"+counter+"</div>";
         }
         htmlCode = htmlCode + "<div style=\"clear: both;\"></div>";
     }
@@ -21,8 +21,66 @@ function insertDivs(){
         htmlCode = htmlCode + "<div class=\"gameDivs alphabetNumbers numNumbers\">"+i+"</div>";
     }
 
-
     container.innerHTML = htmlCode;
+    console.log(fillVerticalPositions(7,7,3));
+    console.log(fillHorizontalPositions(7,7,3));
 }
 
-window.onload = insertDivs;
+function generatePositions(){
+    var availablePos = [];
+    var shipsAmount = 0;
+    var shipsPos = [];
+    var verticalsPositions;
+    var horizontalPositions;
+
+    for(var i = 0; i < 49; i++){    //Fill availablePos with 49 true values (0-48)
+        availablePos.push(true);
+    }
+
+    shipsAmount = getRandomNumber(1, 5);
+
+    for(var i = 0; i < shipsAmount; i++){
+
+
+        var pos1;
+        var pos2;
+        var pos3;
+        shipsPos[i] = {};
+    }
+}
+
+
+function getRandomNumber(min, max){
+    max+1;
+    return Math.floor(Math.random() * (max - min)) + min;
+}
+
+function fillHorizontalPositions(width, height, shipLength){    //Generate array list of positions allowed for horizontally oriented ships
+    var arrayLength = width*height;
+    var lastIndex = width*(shipLength-1);
+    lastIndex = arrayLength - lastIndex+1;
+    var horizontalPositions = [];
+    for(var i = 1; i<= arrayLength; i++){
+        if(i == lastIndex){
+            break;
+        }
+        horizontalPositions.push(i);
+    }
+    return horizontalPositions;
+}
+
+function fillVerticalPositions(width, height, shipLength){      //Generate array list of positions allowed for vertically oriented ships
+    var arrayLength = width*height;
+    var maxNumInWidth = width-shipLength+1;
+    var verticalsPositions = [];
+    for(var i = 1; i <= arrayLength; i++){
+        verticalsPositions.push(i);
+        if(i == maxNumInWidth){
+            i = i + shipLength-1;
+            maxNumInWidth = maxNumInWidth+width;
+        }
+    }
+    return verticalsPositions;
+}
+
+window.onload = insertDivs();
