@@ -1,8 +1,17 @@
+var shipsOnMap = [];
+var attempts = 0;
+var hits = 0;
+var miss = 0;
+var howManyShoots = 0;
+var howManyShips = 0;
+
+
 function mainF(){
     insertDivs();
-    generatePositions();
+    var shipsPositions = generatePositions();
+    shipsOnMap = shipsPositions;
+    console.log(shipsOnMap);
 }
-
 
 
 
@@ -14,11 +23,11 @@ function insertDivs(){
 
     for(var i = 0; i < 7; i++){
 
-        htmlCode = htmlCode + "<div class=\"gameDivs alphabetNumbers\">"+alphabet[i]+"</div>";
+        htmlCode = htmlCode + "<div class=\"gameDivs alphabetNumbers\" >"+alphabet[i]+"</div>";
 
         for(var x = 0; x < 7; x++){
             counter = counter + 1;
-            htmlCode = htmlCode + "<div id=\"gameDiv"+counter+"\" class=\"gameDivs\">"+counter+"</div>";
+            htmlCode = htmlCode + "<div id=\"gameDiv"+counter+"\" class=\"gameDivs bcChange\" onclick=\"putShipsOnMap("+counter+")\">"+counter+"</div>";
         }
         htmlCode = htmlCode + "<div style=\"clear: both;\"></div>";
     }
@@ -52,6 +61,7 @@ function generatePositions(){           //Generate positions of ships
     }
 
     shipsAmount = getRandomNumber(minimumValueOfShipsOnMap, maximumValuesOfShipsOnMap);
+    howManyShips = shipsAmount;
 
     for(var i = 0; i < shipsAmount; i++){
         switch (getRandomNumber(1,2)) {
@@ -66,10 +76,9 @@ function generatePositions(){           //Generate positions of ships
                     var pos3 = pos2 + 1;
 
                     if(availablePos[pos1-1] && availablePos[pos2-1] && availablePos[pos3-1]){
-                        shipsPos[i] = {
-                            "pos1" : pos1,
-                            "pos2" : pos2,
-                            "pos3" : pos3
+                        for(var x = 0; x < 3; x++){
+                            var pos1 = pos1 + 1;
+                            shipsPos.push(pos1);
                         }}}
             break;
 
@@ -84,14 +93,50 @@ function generatePositions(){           //Generate positions of ships
                     var pos3 = pos2 + 7;
 
                     if(availablePos[pos1-1] && availablePos[pos2-1] && availablePos[pos3-1]){
-                        shipsPos[i] = {
-                            "pos1" : pos1,
-                            "pos2" : pos2,
-                            "pos3" : pos3
+                        for(var x = 0; x < 3; x++){
+                            var pos1 = pos1 + 7;
+                            shipsPos.push(pos1);
                         }}}
             break;
     }}
+    attempts = shipsAmount*5;
+    updateBarInfo();
     return shipsPos;
+}
+
+function putShipsOnMap(num){
+
+    var idNum = "gameDiv" + num;
+    var div = document.getElementById(idNum);
+    if(shipsOnMap.includes(num)){
+        div.style.backgroundImage = "url(png/ship.png)"
+        hits++;
+    }
+    else{
+        div.style.backgroundImage = "url(png/miss.png)"
+        miss++;
+    }
+
+    if((hits+miss) == attempts){
+        alert("Przegrałeś!");
+        window.location.reload();
+    }
+    if(hits == (howManyShips*3)){
+        alert("Wygrałeś!");
+        window.location.reload();
+    }
+
+    updateBarInfo();
+}
+
+
+function updateBarInfo(){
+    var nav = document.getElementById("nav");
+    var htmlCode = "";
+
+    htmlCode = htmlCode + "Ilość statków na planszy: " + howManyShips + "<br>";
+    htmlCode = htmlCode + "Ilość strzałów: " + (hits+miss) +"/"+attempts+" <br>";
+    nav.innerHTML = htmlCode; 
 }
 
 
@@ -128,4 +173,4 @@ function fillVerticalPositions(width, height, shipLength){      //Generate array
     return verticalsPositions;
 }
 
-window.onload = insertDivs();
+window.onload = mainF();
