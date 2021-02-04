@@ -29,6 +29,14 @@ article
     height: 98px;
     border: green 1px solid;
     float: left;
+    background-repeat: no-repeat;
+    background-position: center;
+}
+
+.bcChange:hover
+{
+    background-color: rgba(0, 128, 0, 0.342);
+    cursor: pointer;
 }
 
 .alphabetNumbers
