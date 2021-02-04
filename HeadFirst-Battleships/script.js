@@ -10,7 +10,6 @@ function mainF(){
     insertDivs();
     var shipsPositions = generatePositions();
     shipsOnMap = shipsPositions;
-    console.log(shipsOnMap);
 }
 
 
@@ -116,6 +115,8 @@ function putShipsOnMap(num){
         div.style.backgroundImage = "url(png/miss.png)"
         miss++;
     }
+
+    div.setAttribute('onclick', '');
 
     if((hits+miss) == attempts){
         alert("Przegrałeś!");
