@@ -1,13 +1,16 @@
 package pl.krystian.Hibernate;
 
-/**
- * Hello world!
- *
- */
+
 public class App 
 {
     public static void main( String[] args )
     {
-        System.out.println( "Hello World!" );
+    	User user = new User();
+    	user.setId(1);
+    	user.setName("Krystian Izdebski");
+    	user.setAge(21);
+    	
+    	UserDao userDao = new UserDao();
+    	userDao.saveUser(user);
     }
 }
