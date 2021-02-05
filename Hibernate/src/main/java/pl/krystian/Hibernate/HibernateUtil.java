@@ -17,7 +17,7 @@ public class HibernateUtil {
     	settings.put(Environment.URL, "jdbc:mysql://localhost:3306/hibernate");
     	settings.put(Environment.USER, "root");
     	settings.put(Environment.PASS, "");
-    	settings.put(Environment.HBM2DDL_AUTO, "create");
+    	settings.put(Environment.HBM2DDL_AUTO, "update");
     	
     	Configuration config = new Configuration();
     	

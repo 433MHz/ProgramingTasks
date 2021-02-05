@@ -1,6 +1,9 @@
 package pl.krystian.Hibernate;
 
 
+
+import java.util.List;
+
 import org.hibernate.Session;
 import org.hibernate.Transaction;
 
@@ -18,4 +21,11 @@ public class UserDao {
 		transaction.commit();
 	}
 
+
+	public List<User> getUsers(){
+		Session session = HibernateUtil.getSessionFactory().openSession();
+		List<User> lista = session.createQuery("from User", User.class).list();
+		
+		return lista;
+	}
 }
