@@ -1,4 +1,4 @@
-package pl.krystian.Hibernate;
+package pl.krystian.Hibernate_5._test;
 
 import junit.framework.Test;
 import junit.framework.TestCase;
