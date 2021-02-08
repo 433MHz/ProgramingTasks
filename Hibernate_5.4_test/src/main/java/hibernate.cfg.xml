@@ -8,6 +8,6 @@
   <property name="hibernate.connection.username">root</property>
   <property name="hibernate.dialect">org.hibernate.dialect.MySQL5Dialect</property>
   <property name="hbm2ddl.auto">update</property>
-  <mapping resource="pl/krystian/Hibernate_5/_test/User.hbm.xml"/>
+  <mapping class="pl.krystian.Hibernate_5._test.User"/>
  </session-factory>
 </hibernate-configuration>

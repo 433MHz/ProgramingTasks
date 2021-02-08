@@ -1,5 +1,14 @@
 package pl.krystian.Hibernate_5._test;
 
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
+import javax.persistence.Table;
+
+import org.hibernate.annotations.GenericGenerator;
+
+@Entity
+@Table(name = "uzytkownicy")
 public class User {
 	
 	private int id;
@@ -9,6 +18,9 @@ public class User {
 	
 	
 	
+	@Id
+	@GeneratedValue(generator = "increment")
+	@GenericGenerator(name = "increment", strategy = "increment")
 	public int getId() {
 		return id;
 	}
