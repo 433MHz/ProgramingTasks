@@ -7,7 +7,19 @@ package pl.krystian.Enum;
 public class App 
 {
 	public enum Color{
-		RED, GREEN, BLUE;
+		RED, GREEN(100), BLUE(300);
+		
+		int price;
+		
+		Color(){
+			price = 200;
+			System.out.println("In empty constructor | " + price);
+		}
+		
+		Color(int x){
+			price = x;
+			System.out.println("In int constructor | " + price);
+		}
 	}
 	
     public static void main( String[] args )
