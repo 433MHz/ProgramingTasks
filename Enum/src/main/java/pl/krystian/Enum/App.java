@@ -25,19 +25,19 @@ public class App
     public static void main( String[] args )
     {
     	
-    	Color c = Color.RED;
+    	Color c = Color.BLUE;
     	
     	switch (c) {
 		case BLUE:
-			System.out.println("Blue color");
+			System.out.println("Blue color | " + c.price);
 			break;
 
 		case RED:
-			System.out.println("Red color");
+			System.out.println("Red color | " + c.price);
 			break;
 			
 		case GREEN:
-			System.out.println("Green color");
+			System.out.println("Green color | " + c.price);
 			break;
 		}
     }
