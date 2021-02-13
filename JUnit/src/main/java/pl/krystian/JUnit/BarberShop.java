@@ -17,7 +17,7 @@ public class BarberShop {
 		return maxCustomers;
 	}
 	
-	public void addCustomer(String name) {
+	public void addCustomer(String name) throws RuntimeException {
 		if(queue.size() < maxCustomers) {
 			queue.add(name);
 		}
