@@ -3,6 +3,8 @@ package pl.krystian.JUnit;
 import static org.junit.Assert.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 
+import java.util.NoSuchElementException;
+
 import org.junit.jupiter.api.Nested;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
@@ -39,4 +41,26 @@ public class BarberShopTest {
 				assertThrows(RuntimeException.class, () -> {bs.addCustomer("Monika");});
 			}
 		}
+		
+		@Nested
+		class RemoveCustomerTest{
+		
+		@Test
+		void testRemoveCustomer() {
+			BarberShop bs = new BarberShop(3);
+			bs.addCustomer("Krystian");
+			bs.addCustomer("Tomek");
+			
+			assertEquals("Krystian", bs.removeCustomer());
+			assertEquals("Tomek", bs.removeCustomer());
+		}
+		
+		@Test
+		void testRemoveCustomerWhenQueueEmpty() {
+			BarberShop bs = new BarberShop(3);
+
+			assertThrows(NoSuchElementException.class, () -> bs.removeCustomer());
+		}
+		}
 }
+		
